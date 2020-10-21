@@ -83,7 +83,9 @@ public class UsersServiceImpl implements UsersService {
 //        String albumsUrl = String.format(environment.getProperty("albums.url"), userId);
 //        ResponseEntity<List<AlbumResponseModel>> albumsListResponse = restTemplate.exchange(albumsUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<AlbumResponseModel>>() {});
 //        List<AlbumResponseModel> albumsList = albumsListResponse.getBody();
+        logger.info("Before calling albums MicroService");
         List<AlbumResponseModel> albumsList = albumsServiceClient.getAlbums(userId);
+        logger.info("After calling albums MicroService");
 
         userDto.setAlbums(albumsList);
 
